@@ -1,4 +1,4 @@
 4zip
 ====
 
-Extreemle Fast Compression Program Based On lz4
+Extremely Fast Compression Program Based On lz4
