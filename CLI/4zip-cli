@@ -1,14 +1,23 @@
 
 #!/usr/bin/env python2.6
 
-os, os.path
+import os, os.path
 from lib import lz4file
 from optparse import OptionParser
 
 parser = OptionParser()
-parser.add_option("-i", "--input", input="filename",
+
+parser.add_option("-i", "--input", dest="InputName",
                   help="input file or directory")
-parser.add_option("-o", "--output", dest="filename",
+
+parser.add_option("-o", "--output", dest="OutputName",
                   help="output archive file")
 
+parser.add_option("-p", "--progress",
+                  action="store_false", default=False,
+                  help="print progress")
+
 (options, args) = parser.parse_args()
+
+
+print options['OutputName']
