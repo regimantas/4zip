@@ -5,19 +5,26 @@ import os, os.path
 from lib import lz4file
 from optparse import OptionParser
 
-parser = OptionParser()
+class Files_Compressor:
 
-parser.add_option("-i", "--input", dest="InputName",
+  def CLI_Parser(self):
+    parser = OptionParser()
+    parser.add_option("-i", "--input", dest="InputName",
                   help="input file or directory")
-
-parser.add_option("-o", "--output", dest="OutputName",
+    parser.add_option("-o", "--output", dest="OutputName",
                   help="output archive file")
-
-parser.add_option("-p", "--progress",
-                  action="store_false", default=False,
+    parser.add_option("-p", "--progress",
+                  action="store_true", default=False,
                   help="print progress")
+    (options, args) = parser.parse_args()
 
-(options, args) = parser.parse_args()
+    if options.InputName is not None:
+      print options.InputName
+    if options.OutputName is not None:
+      print options.OutputName
+    print options.progress
+
+    lz4file.lz4o().Compress(options.InputName)
 
 
-print options['OutputName']
+if __name__ == '__main__': Files_Compressor().CLI_Parser ()

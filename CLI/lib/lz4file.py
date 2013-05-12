@@ -108,9 +108,11 @@ class lz4o:
       if os.stat(Name).st_size < 1073741824:
         f = open(outpu_name, "wb")
         self.CompressFile(Name, outpu_name, f)
+        f.close()
       else:
         f = zipfile.ZipFile(outpu_name, mode='w', compression=zipfile.ZIP_STORED)
         self.CompressFile(Name, Name+".lz4", f)
+        f.close()
     elif os.path.isdir(Name):
       f = zipfile.ZipFile(outpu_name, mode='w', compression=zipfile.ZIP_STORED)
 
@@ -126,7 +128,7 @@ class lz4o:
             self.CompressFile(Filex, fname+os.path.relpath(Filex, start_dir), f)
             #print os.path.abspath(Filex).replace(Name,'#'+Name)
             #quit()
-    f.close()
+      f.close()
 
   def Files_List(self, Name):
      File_List = []
